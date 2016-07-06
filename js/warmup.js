@@ -7,3 +7,9 @@
 
 //Don't forget to wrap your script in a callback so it runs when the document
 //has loaded.
+var daName = ""; 
+
+$('#toGreet').keypress(function () {
+    daName = $(this).val(); 
+    $('#greet').text('Good afternoon, ' +daName);
+});

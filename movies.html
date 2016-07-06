@@ -1,28 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" ng-app="MoviesApp">
 
-  <title>Movie Data</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/main.css">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Movie Data</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
-<body class="container">
+
+<body class="container" ng-controller="MoviesCtrl">
 
 	<h1>Movie Data Browser</h1>
 	<p class="lead">Movies released during 2015</p>
 
-  <section class="demo well">
-    <h2>Angular Demo here</h2>
-  </section>
+	<section class="demo well" ng-if="showDemo">
+		<h2>Angular Demo here</h2>
 
-  <form role="form" class="form-inline">
-    <button type="button"><i class="fa fa-search" aria-label="Search"></i></button>
-    <input type="text" name="search" id="searchTerm" placeholder="Enter a search term...">
-  </form>
+		<p>Message: <input type="text" ng-model="message"> </p>
+
+		<p>Message?: <input type="text" ng-model="message"> </p>
+
+		<p ng-bind="message"></p>
+
+		<p> Showing the carfax of {{movies}}</p>
+
+		<ul>
+			<li ng-repeat="movie in movies">
+				{{movie.title}} {{movie.year}}
+			</li>
+		</ul>
+
+		<button type="button" ng-click="sayHello()"> BOOM </button>
+
+	</section>
+
+	<form role="form" class="form-inline">
+		<button type="button"><i class="fa fa-search" aria-label="Search"></i></button>
+		<input type="text" name="search" id="searchTerm" placeholder="Enter a search term...">
+	</form>
 
 	<table class="table">
 		<tr>
@@ -40,11 +59,13 @@
 			<td>Studio X</td>
 		</tr>
 	</table>
-
+	<!-- load Angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
 	<!-- load our script -->
 	<script src="data/movies-2015.js"></script>
 	<!-- load our script -->
 	<script src="js/movies.js"></script>
 
 </body>
+
 </html>
